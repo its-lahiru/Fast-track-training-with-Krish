@@ -13,7 +13,7 @@ function quickSort(inputList) {
         return list;
     }
 
-    // define first values of the list as pivot
+    // define 0 index value as pivot
     const pivot = list[0];
 
     // filter values smaller than pivot
