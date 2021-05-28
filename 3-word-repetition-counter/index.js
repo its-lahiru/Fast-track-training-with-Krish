@@ -1,30 +1,3 @@
-function wordRepetitionCounter(senetence) {
-    // create words array from sentence
-    let list = senetence.split(' ');
-    let wordsArray = [];
+const { wordRepetitionCounter } = require('./word-repetition-counter');
 
-    for (let i = 0; i < list.length; i++) {
-        // add to lowercase words array
-        wordsArray.push(list[i].toLowerCase());
-    }
-    console.log(wordsArray);
-
-    // create unique word array
-    let uniqueWordsArray = [...new Set(wordsArray)];
-    console.log(uniqueWordsArray);
-
-    for (let i = 0; i < uniqueWordsArray.length; i++) {
-        let duplicates = 0;
-        for (let j = 0; j < wordsArray.length; j++) {
-            if (uniqueWordsArray[i] === wordsArray[j]) {
-                duplicates++;
-            }
-        }
-        if (duplicates > 1) {
-            console.log(`'${uniqueWordsArray[i]}' has ${duplicates} duplicates`);
-        } else
-            console.log(`'${uniqueWordsArray[i]}' has no duplicates`);
-    }
-}
-
-wordRepetitionCounter('The quick brown fox jumps over the lazy dog dog dog');
+wordRepetitionCounter('The quick brown fox dog jumps over the lazy dog dog dog');

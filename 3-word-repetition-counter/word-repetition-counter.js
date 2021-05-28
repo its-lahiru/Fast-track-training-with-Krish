@@ -1,0 +1,30 @@
+function wordRepetitionCounter(senetence) {
+    // create words array from sentence
+    let list = senetence.split(' ');
+    let wordsArray = [];
+
+    for (let i = 0; i < list.length; i++) {
+        // add to lowercase words array
+        wordsArray.push(list[i].toLowerCase());
+    }
+    console.log('wordsArray = ', wordsArray);
+
+    // create unique word array
+    let uniqueWordsArray = [...new Set(wordsArray)];
+    console.log('Unique Words Array = ', uniqueWordsArray);
+
+    for (let i = 0; i < uniqueWordsArray.length; i++) {
+        let duplicates = 0;
+        for (let j = 0; j < wordsArray.length; j++) {
+            if (uniqueWordsArray[i] === wordsArray[j]) {
+                duplicates++;
+            }
+        }
+        if (duplicates > 1) {
+            console.log(`'${uniqueWordsArray[i]}' has ${duplicates} duplicates`);
+        } else
+            console.log(`'${uniqueWordsArray[i]}' has no duplicates`);
+    }
+}
+
+module.exports = { wordRepetitionCounter };
