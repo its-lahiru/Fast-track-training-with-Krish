@@ -5,7 +5,7 @@ function wordRepetitionCounter(senetence) {
 
     for (let i = 0; i < list.length; i++) {
         // add to lowercase words array
-        wordsArray.push(list[i].toLowerCase());
+        wordsArray.push(list[i]);
     }
     console.log('wordsArray = ', wordsArray);
 
