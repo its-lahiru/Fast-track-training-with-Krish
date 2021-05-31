@@ -1,9 +1,9 @@
 // user concept of sorted and and unsorted array
-// sort smallest value first and sort it 
-function selectionSort(inputList) {
+// sort smallest value first and sort it
+const selectionSort = function (inputList) {
 
-    // copy list
-    const list = [...inputList];
+    // copy input list
+    let list = [...inputList];
 
     for (let i = 0; i < list.length - 1; i++) {
         // assume minimum is in the first index

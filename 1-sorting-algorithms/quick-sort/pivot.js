@@ -1,5 +1,5 @@
 // returns pivot's sorted location index
-function pivot(arr, start = 0, end = arr.length - 1) {
+const pivot = function (arr, start = 0, end = arr.length - 1) {
     let pivot = arr[start];
     // position which pivot fits in sorted array
     let swapIndex = start;

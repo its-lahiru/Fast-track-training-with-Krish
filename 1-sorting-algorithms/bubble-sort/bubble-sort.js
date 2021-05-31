@@ -1,18 +1,18 @@
-function bubbleSort(inputList) {
+const bubbleSort = function (inputList) {
     let isSorted = false;
 
     // copy array
     const list = [...inputList];
 
-    for (let i = 1; i < list.length - 1; i++) {
+    for (let index_i = 1; index_i < list.length - 1; index_i++) {
         // assume already sorted in each iteration
         isSorted = true;
 
-        for (let j = 0; j < list.length - i; j++) {
+        for (let index_j = 0; index_j < list.length - index_i; index_j++) {
             // right value is less than left value
-            if (list[j + 1] < list[j]) {
+            if (list[index_j + 1] < list[index_j]) {
                 // swap values
-                [list[j], list[j + 1]] = [list[j + 1], list[j]];
+                [list[index_j], list[index_j + 1]] = [list[index_j + 1], list[index_j]];
                 isSorted = false;
             }
         }
@@ -21,6 +21,6 @@ function bubbleSort(inputList) {
         }
     }
     return list;
-}
+};
 
-module.exports = { bubbleSort }
+module.exports = { bubbleSort };

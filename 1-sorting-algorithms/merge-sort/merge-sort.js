@@ -1,4 +1,4 @@
-const { merge } = require('./merge');
+const { mergeArrays } = require('./merge-arrays');
 
 // split, sort, merge
 // divide and conquer
@@ -10,7 +10,7 @@ function mergeSort(list) {
     let middle = Math.floor(list.length / 2);
     let left = mergeSort(list.slice(0, middle));
     let right = mergeSort(list.slice(middle));
-    return merge(left, right);
+    return mergeArrays(left, right);
 }
 
 module.exports = { mergeSort };

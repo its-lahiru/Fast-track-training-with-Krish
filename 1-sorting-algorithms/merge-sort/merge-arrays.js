@@ -1,4 +1,4 @@
-function merge(list_i, list_j) {
+const mergeArrays = function (list_i, list_j) {
     let list = [];
     let i = 0;
     let j = 0;
@@ -27,4 +27,4 @@ function merge(list_i, list_j) {
     return list;
 }
 
-module.exports = { merge };
+module.exports = { mergeArrays };
