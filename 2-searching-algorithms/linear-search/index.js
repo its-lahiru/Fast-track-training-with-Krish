@@ -1,9 +1,9 @@
 const { linearSearch } = require('./linear-search');
 
-let givenArray = ['a', 'b', 'c', 'd'];
-console.log('given array =', givenArray);
-let searchItem = 'b';
-console.log('search item =', searchItem);
+const givenArray = ['a', 'b', 'c', 'd'];
+const searchItem = 'b';
+
+console.log('search item =', searchItem, ', given array =', givenArray);
 
 const itemIndex = linearSearch(givenArray, searchItem);
 

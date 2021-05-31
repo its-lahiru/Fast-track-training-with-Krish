@@ -1,6 +1,6 @@
 // divide and conquer
 // for sorted arrays
-function binarySearch(sortedList, searchItem) {
+const binarySearch = function (sortedList, searchItem) {
     let list = [...sortedList];
 
     let start = 0;
