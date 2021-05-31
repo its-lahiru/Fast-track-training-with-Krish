@@ -10,4 +10,4 @@ function palindromeDateChecker(dateObject) {
         return false;
 }
 
-module.exports = { palindromeDateChecker };
+export default { palindromeDateChecker };

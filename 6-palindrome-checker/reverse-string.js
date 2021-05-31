@@ -1,9 +1,11 @@
-function reverseString(str) {
-    let length = str.length;
+function reverseString(inputString) {
+    const length = inputString.length;
     let reversedString = '';
-    for (let i = length - 1; i >= 0; i--)
-        reversedString += str[i];
+    for (let index = length - 1; index >= 0; index--)
+        reversedString += inputString[index];
     return reversedString;
+
+    // return inputString.split().reverse().join('');
 }
 
-module.exports = { reverseString };
+export default { reverseString };

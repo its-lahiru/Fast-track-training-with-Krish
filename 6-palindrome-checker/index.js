@@ -1,4 +1,4 @@
-const { palindromeChecker } = require('./palindrome-checker');
+import { palindromeChecker } from './palindrome-checker';
 
 const mockValues = [
     'mom',

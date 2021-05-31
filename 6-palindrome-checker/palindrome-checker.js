@@ -1,6 +1,6 @@
-const { palindromeDateChecker } = require('./palindrome-date-checker');
-const { reverseNumber } = require('./reverse-number');
-const { reverseString } = require('./reverse-string');
+import { palindromeDateChecker } from './palindrome-date-checker';
+import { reverseNumber } from './reverse-number';
+import { reverseString } from './reverse-string';
 
 function palindromeChecker(arr) {
     let items = [...arr];
@@ -53,4 +53,4 @@ function palindromeChecker(arr) {
     }
 }
 
-module.exports = { palindromeChecker };
+export default { palindromeChecker };
