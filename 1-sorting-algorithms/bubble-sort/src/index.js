@@ -1,4 +1,4 @@
-const { bubbleSort } = require('./bubble-sort');
+import { bubbleSort } from './bubble-sort';
 
 const unsortedArray = [12, 23, 34, 1, 56, 33];
 console.log('unsorted array =', unsortedArray);

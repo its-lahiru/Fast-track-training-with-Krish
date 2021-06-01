@@ -1,5 +1,5 @@
 // returns pivot's sorted location index
-const pivot = function (arr, start = 0, end = arr.length - 1) {
+export const pivot = function (arr, start = 0, end = arr.length - 1) {
     let pivot = arr[start];
     // position which pivot fits in sorted array
     let swapIndex = start;
@@ -19,5 +19,3 @@ const pivot = function (arr, start = 0, end = arr.length - 1) {
     swap(arr, start, swapIndex);
     return swapIndex;
 }
-
-module.exports = { pivot };

@@ -1,4 +1,4 @@
-const linearSearch = function (list, item) {
+export const linearSearch = function (list, item) {
     // assume item is not found
     let index = -1;
     for (let element of list) {
@@ -9,5 +9,3 @@ const linearSearch = function (list, item) {
     }
     return index;
 }
-
-module.exports = { linearSearch };

@@ -1,6 +1,6 @@
-const { pivot } = require('./pivot');
+import { pivot } from './pivot';
 
-function quickSort(arr, left = 0, right = arr.length - 1) {
+export const quickSort = function (arr, left = 0, right = arr.length - 1) {
 
     if (left < right) {
         const pivotIndex = pivot(arr, left, right);
@@ -11,5 +11,3 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
     }
     return arr;
 }
-
-module.exports = { quickSort };

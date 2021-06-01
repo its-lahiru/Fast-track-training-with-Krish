@@ -1,4 +1,4 @@
-const bubbleSort = function (inputList) {
+export const bubbleSort = function (inputList) {
     let isSorted = false;
 
     // copy array
@@ -22,5 +22,3 @@ const bubbleSort = function (inputList) {
     }
     return list;
 };
-
-module.exports = { bubbleSort };

@@ -1,8 +1,8 @@
-const { mergeArrays } = require('./merge-arrays');
+import { mergeArrays } from './merge-arrays';
 
 // split, sort, merge
 // divide and conquer
-function mergeSort(list) {
+export const mergeSort = function (list) {
     if (list.length <= 1) {
         return list;
     }
@@ -12,5 +12,3 @@ function mergeSort(list) {
     let right = mergeSort(list.slice(middle));
     return mergeArrays(left, right);
 }
-
-module.exports = { mergeSort };

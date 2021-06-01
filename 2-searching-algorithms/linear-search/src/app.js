@@ -1,4 +1,4 @@
-const { linearSearch } = require('./linear-search');
+import { linearSearch } from './linear-search';
 
 const givenArray = ['a', 'b', 'c', 'd'];
 const searchItem = 'b';

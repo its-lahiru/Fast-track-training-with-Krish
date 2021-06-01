@@ -1,6 +1,6 @@
 // divide and conquer
 // for sorted arrays
-const binarySearch = function (sortedList, searchItem) {
+export const binarySearch = function (sortedList, searchItem) {
     let list = [...sortedList];
 
     let start = 0;
@@ -25,7 +25,4 @@ const binarySearch = function (sortedList, searchItem) {
         return middle;
     }
     return -1;
-
 }
-
-module.exports = { binarySearch };

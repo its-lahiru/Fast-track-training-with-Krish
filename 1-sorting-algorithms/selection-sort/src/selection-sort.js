@@ -1,6 +1,6 @@
-// user concept of sorted and and unsorted array
-// sort smallest value first and sort it
-const selectionSort = function (inputList) {
+// use the concept of sorted and and unsorted array
+// smallest value will be sorted first
+export const selectionSort = function (inputList) {
 
     // copy input list
     let list = [...inputList];
@@ -21,5 +21,3 @@ const selectionSort = function (inputList) {
     }
     return list;
 }
-
-module.exports = { selectionSort };

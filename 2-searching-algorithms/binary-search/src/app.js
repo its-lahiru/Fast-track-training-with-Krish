@@ -1,4 +1,4 @@
-const { binarySearch } = require('./binary-search');
+import { binarySearch } from './binary-search';
 
 const inputList = [1, 13, 34, 56, 67, 88, 100];
 const searchItem = 100;
