@@ -1,26 +1,69 @@
-const { lowerCaseConvertor } = require('./lowercase-convertor');
+// not case sensitive
+const { lowerCaseConvertor } = require("./lowercase-convertor");
 
-function anagramFinder(word1, word2) {
-    const letterArray1 = lowerCaseConvertor(word1);
-    // console.log(letterArray1);
-    const letterArray2 = lowerCaseConvertor(word2);
-    // console.log(letterArray2);
+const isAnagramV1 = (word1, word2) => {
+  const letterArray1 = lowerCaseConvertor(word1);
+  const letterArray2 = lowerCaseConvertor(word2);
 
-    const sortedArray1 = letterArray1.sort();
-    const sortedArray2 = letterArray2.sort();
-    let isAnagram = false;
+  const sortedArray1 = letterArray1.sort();
+  const sortedArray2 = letterArray2.sort();
+  let isAnagram = true;
 
-    for (let i = 0; i < sortedArray1.length; i++) {
+  for (const index in sortedArray1) {
+    if (sortedArray1[index] !== sortedArray2[index]) {
+      isAnagram = false;
+      break;
+    }
+  }
+  if (isAnagram) return true;
+  else return false;
+};
+
+
+
+
+// case sensitive
+const isAnagramV2 = (word1, word2) => {
+  // assume words are not anagram
+  let isAnagram = false;
+
+  // create map using first word
+  const charMap1 = createCharMap(word1);
+  // create map using second word
+  const charMap2 = createCharMap(word2);
+
+  for (const [key1, value1] of charMap1.entries()) {
+    for (const [key2, value2] of charMap2.entries()) {
+      if (key1.includes(key2) && value1 === value2) {
         isAnagram = true;
-        if (sortedArray1[i] !== sortedArray2[i]) {
-            console.log(`'${word1}' and '${word2}' are not anagrams`);
-            isAnagram = false;
-            break;
-        }
+        break;
+      } else {
+        isAnagram = false;
+      }
     }
-    if (isAnagram) {
-        console.log(`'${word1}' and '${word2}' are anagrams`);
+  }
+  return isAnagram;
+};
+
+const createCharMap = (word) => {
+  // char array for word
+  const charArray = word.split("");
+  // create new map
+  let charMap = new Map();
+  for (const char of charArray) {
+    // if key exists increment value count
+    if (charMap.has(char)) {
+      // get current value count
+      let letterCount = charMap.get(char);
+      // increment value count by 1
+      charMap.set(char, letterCount + 1);
     }
+    else {
+      // create new key with count value 1
+      charMap.set(char, 1);
+    }
+  }
+  return charMap;
 }
 
-module.exports = { anagramFinder };
+module.exports = { isAnagramV1, isAnagramV2 };
