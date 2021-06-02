@@ -1,6 +1,6 @@
 const { missingNumberFinder, missingNumbersFinderV2 } = require("./missing-number-finder");
 
-const numberSequence = [1, 2, 3, 4, 5, 6, 8];
+const numberSequence = [2, 3, 4, 5, 6, 8];
 const arraySize = 10;
 console.log('missing numbers =>', missingNumbersFinderV2(numberSequence, arraySize));
 

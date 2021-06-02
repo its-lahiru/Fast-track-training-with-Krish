@@ -38,6 +38,7 @@ const missingNumberFinder = (arr) => {
     }
 }
 
+
 // missingNumbersFinderV2
 const missingNumbersFinderV2 = (givenArray, arraySize) => {
     // copy the given array
@@ -47,15 +48,34 @@ const missingNumbersFinderV2 = (givenArray, arraySize) => {
     // array for store missing numbers
     let missingNumbers = [];
 
-    // start from zero since sequence does not start with zero
-    for (let index = 1; index <= size; index++) {
-        // if the number is not in array it return -1
-        if (array.indexOf(index) === -1) {
-            // add missing number to the array
-            missingNumbers.push(index);
+    // iterate over given sequence size and compare it with the given array
+    for (let value = 1; value <= size; value++) {
+        // assume number is not found
+        let isFound = false;
+        for (const element of array) {
+            // if the value is exists
+            if (element === value) {
+                isFound = true;
+                break;
+            }
+        }
+        // if value is not exists
+        if (!isFound) {
+            missingNumbers.push(value);
         }
     }
     return missingNumbers;
+
+
+    // start from zero since sequence does not start with zero
+    // for (let index = 1; index <= size; index++) {
+    //     // if the number is not in array it return -1
+    //     if (array.indexOf(index) === -1) {
+    //         // add missing number to the array
+    //         missingNumbers.push(index);
+    //     }
+    // }
+    // return missingNumbers;
 }
 
 module.exports = { missingNumberFinder, missingNumbersFinderV2 };
