@@ -1,11 +1,19 @@
 <div class="container">
-    <h2>Fibonacci Sequence Generator</h2>
-    <div class="col-6">
-        <input class="form-control" type="text" [(ngModel)]="requiredFiboLevel" placeholder="Enter a number">
+    <div class="row">
+        <h2>Fibonacci Sequence Checker</h2>
     </div>
-    <div class="col-4">
-        <a class="btn btn-primary" (click)="getFibonacciSequence()">Calculate</a>
+
+    <div class="row">
+        <div class="col-6">
+            <input class="form-control" type="number" [(ngModel)]="inputValue" placeholder="Enter a number">
+        </div>
+        <div class="col-4">
+            <a class="btn btn-primary" (click)="getFibonacciSequence()">Check</a>
+        </div>
     </div>
     <br>
-    <h3>{{fibSequence}}</h3>
+    <div class="row">
+        <h5>{{message}}</h5>
+        <h5 *ngIf="isFibonacci">{{fiboSequence}}</h5>
+    </div>
 </div>

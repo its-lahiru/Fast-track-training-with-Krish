@@ -8,18 +8,23 @@ import { FormBuilder } from '@angular/forms';
 })
 export class FibonacciPrinterComponent implements OnInit {
 
-  fibSequence: any[] = [];
-  private _requiredFiboLevel: string = '';
-  errorMessage: string = '';
+  // for take input value
+  private _inputValue: number = 0;
+  // for display message
+  message: string = '';
+  // to display fibonacci sequnce
+  fiboSequence: number[] = [];
+  // set to true if input number is in the fibonacci sequence
+  isFibonacci: boolean = false;
 
   // setter
-  set requiredFiboLevel(value: string) {
-    this._requiredFiboLevel = value;
+  set inputValue(value: number) {
+    this._inputValue = value;
   }
 
   // getter
-  get requiredFiboLevel() {
-    return this._requiredFiboLevel;
+  get inputValue() {
+    return this._inputValue;
   }
 
   constructor() { }
@@ -27,25 +32,31 @@ export class FibonacciPrinterComponent implements OnInit {
   ngOnInit(): void { }
 
   getFibonacciSequence(): void {
-    // convert input to int
-    const fiboLevel = parseInt(this.requiredFiboLevel, 10);
     // for store fibonacci sequence
-    let fibonacciSequence: any[] = [];
-
-    if (fiboLevel == 1) {
-      this.fibSequence = [0];
-    } else if (fiboLevel == 2) {
-      this.fibSequence = [0, 1];
-    } else if (fiboLevel > 2) {
-      fibonacciSequence[0] = 0;
-      fibonacciSequence[1] = 1;
-      for (let index = 2; index < fiboLevel; index++) {
+    let sequence = [0];
+    // starting index of the loop
+    let index = 0;
+    // loop over until input value is greater than the final fibaonacci number
+    while (this.inputValue > sequence[index]) {
+      // sequence start as 0, 1
+      if (sequence[index] >= 1) {
         // next fibonacci number = previous + one before previous
-        fibonacciSequence[index] = fibonacciSequence[index - 2] + fibonacciSequence[index - 1];
+        let nextFibonacciNumber = sequence[index] + sequence[index - 1];
+        sequence.push(nextFibonacciNumber);
+      } else {
+        sequence.push(sequence[index] + 1);
       }
-      this.fibSequence = fibonacciSequence;
+      index++;
+    }
+
+    // compare last index position of the fibonacci sequence with input value
+    if (sequence[index] == this.inputValue) {
+      this.message = `${this.inputValue} is in the Fibonacci sequence`;
+      this.isFibonacci = true;
+      this.fiboSequence = sequence;
     } else {
-      this.fibSequence = [];
+      this.isFibonacci = false;
+      this.message = `${this.inputValue} is not in the Fibonacci sequence`;
     }
   }
 }
