@@ -1,8 +1,8 @@
 // inspired by bubble sort
-function findThirdLargestNumber(arr) {
+const findThirdLargestNumber = function (arr) {
     const list = [...arr];
     let thirdLargest;
-    let isSorted = false;
+    let isSorted = true;
 
     for (let i = 0; i < list.length; i++) {
         // assume array is already sorted
@@ -21,7 +21,7 @@ function findThirdLargestNumber(arr) {
             break;
         }
     }
-    // if sorted already take return 3rd index value
+    // if sorted already, return 3rd index value from last
     if (isSorted) {
         thirdLargest = list[list.length - 3];
         return thirdLargest;
