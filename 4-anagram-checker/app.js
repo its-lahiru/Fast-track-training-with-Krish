@@ -1,6 +1,6 @@
 const { isAnagramV1, isAnagramV2 } = require("./anagram-finder");
 
-const word1 = "race";
+const word1 = "racee";
 const word2 = "care";
 
 // not case sensitive

@@ -38,6 +38,7 @@ const missingNumberFinder = (arr) => {
     }
 }
 
+// missingNumbersFinderV2
 const missingNumbersFinderV2 = (givenArray, arraySize) => {
     // copy the given array
     const array = givenArray;

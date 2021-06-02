@@ -35,7 +35,7 @@ const isAnagramV2 = (word1, word2) => {
   // iterate over maps and compare keys and their respective values
   for (const [character1, count1] of charMap1.entries()) {
     for (const [character2, count2] of charMap2.entries()) {
-      if (character1.includes(character2) && count1 === count2) {
+      if (character1 === character2 && count1 === count2) {
         isAnagram = true;
         break;
       } else {
