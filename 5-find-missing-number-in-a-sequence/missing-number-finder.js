@@ -1,52 +1,59 @@
-function missingNumberFinder(arr) {
-    const items = [...arr];
-    const length = arr.length - 1;
+const missingNumberFinder = (arr) => {
+    const array = [...arr];
+    const arrayLength = arr.length - 1;
     // differences array for check mismatch differences
     let differences = [];
     // index of missing number
-    let missingNumberIndex;
+    let misMatchDifferenceIndex;
     // general diffrencce of the sequnce
     let difference;
     let isNumberMissed = false;
 
-    for (let i = 0; i < length; i++) {
-        // get the difference between each pair
-        let diff = items[i + 1] - items[i];
-        // add differences to a array
-        differences.push(diff);
+    for (let index_i = 0; index_i < arrayLength; index_i++) {
+        // get the difference between each pair and add to the array
+        differences.push(array[index_i + 1] - array[index_i]);
     }
 
-    for (let i = 0; i < differences.length - 1; i++) {
-        // assume number is not missed
-        isNumberMissed = false;
+    // for (let index_j in differences) {
+    for (let index_j = 0; index_j < differences.length; index_j++) {
         // when right difference is large
-        if (differences[i] < differences[i + 1]) {
-            // missing number index should be mismatched difference index + 1
-            missingNumberIndex = i + 1 + 1;
-            // get the normal difference in the sequence
-            difference = differences[i + 1] / 2;
-            // definitely number is missed
-            isNumberMissed = true;
-            break;
-        }
-        // when left difference is large
-        if (differences[i] > differences[i + 1]) {
-            // missing number index should be mismatched difference index + 1 
-            missingNumberIndex = i + 1;
-            // get the normal difference in the sequence
-            difference = differences[i] / 2;
+        if (differences[index_j - 1] < differences[index_j]) {
+            // so missing number index should be index_j + 1
+            // because difference between (i) and (i+1) is stored in "i" th position in difference array
+            misMatchDifferenceIndex = index_j;
+            // normal difference is equal to difference[index_j] divided by 2
+            difference = differences[index_j] / 2;
             // definitely number is missed
             isNumberMissed = true;
             break;
         }
     }
 
-    if (isNumberMissed)
+    if (isNumberMissed) {
         // missing number is equal to supercede value + differnce of the sequnce
-        return items[missingNumberIndex - 1] + difference;
-    else
+        return array[misMatchDifferenceIndex] + difference;
+    }
+    else {
         return -1;
-
+    }
 }
 
-module.exports = { missingNumberFinder };
+const missingNumbersFinderV2 = (givenArray, arraySize) => {
+    // copy the given array
+    const array = givenArray;
+    // size of the sequence
+    const size = arraySize;
+    // array for store missing numbers
+    let missingNumbers = [];
+
+    for (let i = 1; i <= size; i++) {
+        // if the number is not in array it return -1
+        if (array.indexOf(i) === -1) {
+            // add missing number to the array
+            missingNumbers.push(i);
+        }
+    }
+    return missingNumbers;
+}
+
+module.exports = { missingNumberFinder, missingNumbersFinderV2 };
