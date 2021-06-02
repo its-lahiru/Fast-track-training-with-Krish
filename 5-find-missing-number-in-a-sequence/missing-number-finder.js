@@ -46,11 +46,12 @@ const missingNumbersFinderV2 = (givenArray, arraySize) => {
     // array for store missing numbers
     let missingNumbers = [];
 
-    for (let i = 1; i <= size; i++) {
+    // start from zero since sequence does not start with zero
+    for (let index = 1; index <= size; index++) {
         // if the number is not in array it return -1
-        if (array.indexOf(i) === -1) {
+        if (array.indexOf(index) === -1) {
             // add missing number to the array
-            missingNumbers.push(i);
+            missingNumbers.push(index);
         }
     }
     return missingNumbers;
