@@ -29,13 +29,10 @@ export class FibonacciPrinterComponent implements OnInit {
   getFibonacciSequence(): void {
     // convert input to int
     const fiboLevel = parseInt(this.requiredFiboLevel, 10);
-
     // for store fibonacci sequence
     let fibonacciSequence: any[] = [];
 
-    if (fiboLevel == 0) {
-      this.fibSequence = [];
-    } else if (fiboLevel == 1) {
+    if (fiboLevel == 1) {
       this.fibSequence = [0];
     } else if (fiboLevel == 2) {
       this.fibSequence = [0, 1];
