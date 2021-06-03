@@ -3,12 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { ArrayToStringPipe } from './array-to-string.pipe';
 import { FibonacciPrinterComponent } from './fibonacci-printer/fibonacci-printer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FibonacciPrinterComponent
+    FibonacciPrinterComponent,
+    ArrayToStringPipe
   ],
   imports: [
     BrowserModule,
