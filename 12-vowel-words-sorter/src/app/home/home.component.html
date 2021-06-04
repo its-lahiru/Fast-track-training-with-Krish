@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row alert alert-info" role="alert">
+        <h3>Vowel Word Sorter</h3>
+    </div>
+    <div class="row">
+        <textarea [(ngModel)]="paragraph" name="paragraph" id="paragraph" rows="5"></textarea>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
+    </div>
+    <br>
+    <div class="row alert alert-warning">
+        <h3>Sorted Vowel Words</h3>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col-3" scope="col">#</th>
+                    <th class="col-5" scope="col">A-Z sorted words</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let word of sortedVoweledWords">
+                <tr>
+                    <th>{{incrementRowNumber()}}</th>
+                    <td>{{word}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
