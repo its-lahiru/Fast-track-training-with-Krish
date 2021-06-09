@@ -1,0 +1,9 @@
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label>Enter number position</label>
+        <input [(ngModel)]="numberPosition" type="number" class="form-control" required>
+    </div>
+</div>
+<button (click)="getNthLargestNumber()" class="btn btn-primary">Get Nth Largest Number</button>
+<br>
+<h3>{{nthLargestNumber}}</h3>

@@ -1,0 +1,11 @@
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label>Enter sentence</label>
+        <textarea [(ngModel)]="sentence" type="text" class="form-control" required></textarea>
+    </div>
+</div>
+<button (click)="countLetterRepetition()" class="btn btn-primary">Count</button>
+<br>
+<div *ngFor="let result of results">
+    <p>{{result}}</p>
+</div>
