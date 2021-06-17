@@ -1,0 +1,24 @@
+<br>
+<a class="btn btn-success" routerLink="/create">Add New Pet</a>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Pet name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Operation</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let pet of pets">
+        <tr>
+            <th>{{pet.name}}</th>
+            <th>{{pet.age}}</th>
+            <th>{{pet.weight}}</th>
+            <td>
+                <a routerLink="/edit" (click)="getPet(pet.id)" class="btn btn-warning">Edit</a>
+                <a class="btn btn-danger" (click)="deletePet(pet.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
