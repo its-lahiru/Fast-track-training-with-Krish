@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Pet } from 'src/app/models/Pet.model';
@@ -16,9 +16,9 @@ export class CreatePetComponent implements OnInit {
   errorMessage: string = '';
 
   petRegisterForm = this.formBuilder.group({
-    name: [''],
-    age: [''],
-    weight: [''],
+    name: ['', Validators.required],
+    age: ['', Validators.required],
+    weight: ['', Validators.required],
   });
 
   constructor(

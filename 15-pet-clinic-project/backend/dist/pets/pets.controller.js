@@ -14,6 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PetsController = void 0;
 const common_1 = require("@nestjs/common");
+const create_pet_dto_1 = require("./dto/create-pet.dto");
+const update_pet_dto_1 = require("./dto/update-pet.dto");
 const pets_service_1 = require("./pets.service");
 let PetsController = class PetsController {
     constructor(petsService) {
@@ -28,18 +30,18 @@ let PetsController = class PetsController {
             console.log(error);
         }
     }
-    async createPet(name, age, weight) {
+    async createPet(data) {
         try {
-            return await this.petsService.createPet(name, age, weight);
+            return await this.petsService.createPet(data);
         }
         catch (error) {
             console.log('Pet creation is failed..');
             console.log(error);
         }
     }
-    async updatePet(id, name, age, weight) {
+    async updatePet(id, data) {
         try {
-            return await this.petsService.updatePet(id, name, age, weight);
+            return await this.petsService.updatePet(id, data);
         }
         catch (error) {
             console.log(`Updating of pet with id=${id} is failed..`);
@@ -74,22 +76,18 @@ __decorate([
 __decorate([
     common_1.Post('api/pets'),
     common_1.HttpCode(common_1.HttpStatus.CREATED),
-    __param(0, common_1.Body('name')),
-    __param(1, common_1.Body('age')),
-    __param(2, common_1.Body('weight')),
+    __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Number, Number]),
+    __metadata("design:paramtypes", [create_pet_dto_1.CreatePetDto]),
     __metadata("design:returntype", Promise)
 ], PetsController.prototype, "createPet", null);
 __decorate([
     common_1.Patch('api/pets/:id'),
     common_1.HttpCode(common_1.HttpStatus.CREATED),
     __param(0, common_1.Param('id')),
-    __param(1, common_1.Body('name')),
-    __param(2, common_1.Body('age')),
-    __param(3, common_1.Body('weight')),
+    __param(1, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, Number, Number]),
+    __metadata("design:paramtypes", [String, update_pet_dto_1.UpdatePetDto]),
     __metadata("design:returntype", Promise)
 ], PetsController.prototype, "updatePet", null);
 __decorate([

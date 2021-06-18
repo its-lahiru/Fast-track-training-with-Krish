@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { CreatePetDto } from './dto/create-pet.dto';
+import { UpdatePetDto } from './dto/update-pet.dto';
 import { PetRepository } from './respository/Pet.repository';
 import { Pet } from './schema/Pet.schema';
 
@@ -6,16 +8,16 @@ import { Pet } from './schema/Pet.schema';
 export class PetsService {
     constructor(private petRepository: PetRepository) { }
 
-    async createPet(name: string, age: number, weight: number): Promise<Pet> {
-        return await this.petRepository.create(name, age, weight);
+    async createPet(data:CreatePetDto): Promise<Pet> {
+        return await this.petRepository.create(data);
     }
 
     async getAllPets(): Promise<Pet[]> {
         return await this.petRepository.findAll();
     }
 
-    async updatePet(petId: string, name: string, age: number, weight: number): Promise<Pet> {
-        return await this.petRepository.update(petId, name, age, weight);
+    async updatePet(petId: string, data: UpdatePetDto): Promise<Pet> {
+        return await this.petRepository.update(petId, data);
     }
 
     async deletePet(id: string): Promise<void> {

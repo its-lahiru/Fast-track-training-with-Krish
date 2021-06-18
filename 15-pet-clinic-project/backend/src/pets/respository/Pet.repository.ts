@@ -2,18 +2,20 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { v1 as uuid } from 'uuid';
+import { CreatePetDto } from '../dto/create-pet.dto';
+import { UpdatePetDto } from '../dto/update-pet.dto';
 import { Pet, PetDocument } from '../schema/Pet.schema';
 
 @Injectable()
 export class PetRepository {
     constructor(@InjectModel(Pet.name) private petModel: Model<PetDocument>) { }
 
-    async create(name: string, age: number, weight: number): Promise<Pet> {
+    async create(data: CreatePetDto): Promise<Pet> {
         const newPet = new this.petModel({
             id: uuid(),
-            name: name,
-            age: age,
-            weight: weight,
+            name: data.name,
+            age: data.age,
+            weight: data.weight,
         });
         if (newPet) {
             return await newPet.save();
@@ -35,17 +37,17 @@ export class PetRepository {
         throw new NotFoundException('Pets are not found..');
     }
 
-    async update(petId: string, name: string, age: number, weight: number): Promise<Pet> {
+    async update(petId: string, data: UpdatePetDto): Promise<Pet> {
         const pet = await this.petModel.findOne({ id: petId });
         if (pet) {
-            if (name) {
-                pet.name = name;
+            if (data.name) {
+                pet.name = data.name;
             }
-            if (age) {
-                pet.age = age;
+            if (data.age) {
+                pet.age = data.age;
             }
-            if (weight) {
-                pet.weight = weight;
+            if (data.weight) {
+                pet.weight = data.weight;
             }
             return pet.save();
         }

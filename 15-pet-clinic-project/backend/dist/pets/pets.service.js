@@ -16,14 +16,14 @@ let PetsService = class PetsService {
     constructor(petRepository) {
         this.petRepository = petRepository;
     }
-    async createPet(name, age, weight) {
-        return await this.petRepository.create(name, age, weight);
+    async createPet(data) {
+        return await this.petRepository.create(data);
     }
     async getAllPets() {
         return await this.petRepository.findAll();
     }
-    async updatePet(petId, name, age, weight) {
-        return await this.petRepository.update(petId, name, age, weight);
+    async updatePet(petId, data) {
+        return await this.petRepository.update(petId, data);
     }
     async deletePet(id) {
         return await this.petRepository.delete(id);

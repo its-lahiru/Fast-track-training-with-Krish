@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -42,9 +42,9 @@ export class EditPetComponent implements OnInit {
     );
 
     this.editForm = this.formBuilder.group({
-      name: '',
-      age: '',
-      weight: '',
+      name: ['', Validators.required],
+      age: ['', Validators.required],
+      weight: ['', Validators.required],
     });
   }
 

@@ -22,12 +22,12 @@ let PetRepository = class PetRepository {
     constructor(petModel) {
         this.petModel = petModel;
     }
-    async create(name, age, weight) {
+    async create(data) {
         const newPet = new this.petModel({
             id: uuid_1.v1(),
-            name: name,
-            age: age,
-            weight: weight,
+            name: data.name,
+            age: data.age,
+            weight: data.weight,
         });
         if (newPet) {
             return await newPet.save();
@@ -46,17 +46,17 @@ let PetRepository = class PetRepository {
         }
         throw new common_1.NotFoundException('Pets are not found..');
     }
-    async update(petId, name, age, weight) {
+    async update(petId, data) {
         const pet = await this.petModel.findOne({ id: petId });
         if (pet) {
-            if (name) {
-                pet.name = name;
+            if (data.name) {
+                pet.name = data.name;
             }
-            if (age) {
-                pet.age = age;
+            if (data.age) {
+                pet.age = data.age;
             }
-            if (weight) {
-                pet.weight = weight;
+            if (data.weight) {
+                pet.weight = data.weight;
             }
             return pet.save();
         }
