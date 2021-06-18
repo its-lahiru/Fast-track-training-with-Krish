@@ -32,7 +32,7 @@ let PetRepository = class PetRepository {
         if (newPet) {
             return await newPet.save();
         }
-        throw new common_1.BadRequestException('Pet creation is failed..');
+        throw new common_1.BadRequestException('Pet creation is failed');
     }
     async findAll() {
         const pets = await this.petModel.find();
@@ -60,12 +60,12 @@ let PetRepository = class PetRepository {
             }
             return pet.save();
         }
-        throw new common_1.NotFoundException('Pet is not found.. Update failed!');
+        throw new common_1.NotFoundException('Pet is not found. Updating failed!');
     }
     async delete(id) {
         const result = await this.petModel.deleteOne({ id: id });
         if (result.n === 0) {
-            throw new common_1.NotFoundException('Pet not found... Deletion failed!');
+            throw new common_1.NotFoundException('Pet not found. Deletion failed!');
         }
     }
     async findById(id) {
@@ -73,7 +73,7 @@ let PetRepository = class PetRepository {
         if (pet) {
             return pet;
         }
-        throw new common_1.NotFoundException('Pet is not found!');
+        throw new common_1.NotFoundException('Pet is not found');
     }
 };
 PetRepository = __decorate([

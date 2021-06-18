@@ -14,8 +14,6 @@ import { PetsService } from 'src/app/services/pets.service';
 })
 export class EditPetComponent implements OnInit {
 
-  errorMessage = '';
-
   petEditForm!: FormGroup;
   pet!: Pet;
 
@@ -32,6 +30,7 @@ export class EditPetComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // get pet detils from global emmitter
     Emitters.petEmitter.subscribe(
       (res: any) => {
         this.petId = res.id;
@@ -50,17 +49,12 @@ export class EditPetComponent implements OnInit {
 
   update(id: string): void {
     this.pet = this.petEditForm.getRawValue();
-    console.log(this.pet);
-    
     this.petService.update(id, this.pet).subscribe(
       (success) => {
         this.router.navigate(['/pets']);
         if (success.status === 201) {
           this.toastrService.success('Successfully updated!', 'Alert');
         }
-      },
-      () => {
-        this.errorMessage = 'All fields are required!';
       }
     );
   }

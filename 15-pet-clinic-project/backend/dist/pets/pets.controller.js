@@ -22,49 +22,19 @@ let PetsController = class PetsController {
         this.petsService = petsService;
     }
     async getAllPets() {
-        try {
-            return await this.petsService.getAllPets();
-        }
-        catch (error) {
-            console.log('Pets retrieval is failed..');
-            console.log(error);
-        }
+        return await this.petsService.getAllPets();
     }
     async createPet(data) {
-        try {
-            return await this.petsService.createPet(data);
-        }
-        catch (error) {
-            console.log('Pet creation is failed..');
-            console.log(error);
-        }
+        return await this.petsService.createPet(data);
     }
     async updatePet(id, data) {
-        try {
-            return await this.petsService.updatePet(id, data);
-        }
-        catch (error) {
-            console.log(`Updating of pet with id=${id} is failed..`);
-            console.log(error);
-        }
+        return await this.petsService.updatePet(id, data);
     }
     async deletePet(id) {
-        try {
-            return await this.petsService.deletePet(id);
-        }
-        catch (error) {
-            console.log(`Deletion of Pet with id=${id} is failed...`);
-            console.log(error);
-        }
+        return await this.petsService.deletePet(id);
     }
     async getPetById(id) {
-        try {
-            return await this.petsService.getPetById(id);
-        }
-        catch (error) {
-            console.log(`Retrieving of Pet with id=${id} is failed...`);
-            console.log(error);
-        }
+        return await this.petsService.getPetById(id);
     }
 };
 __decorate([

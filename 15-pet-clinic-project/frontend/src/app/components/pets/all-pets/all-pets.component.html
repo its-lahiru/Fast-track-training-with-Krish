@@ -1,0 +1,29 @@
+<br>
+<a class="btn btn-success" routerLink="/create">Add New Pet</a>
+<br>
+
+<div *ngIf="arePetRecordsExist">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Pet name</th>
+                <th scope="col">Age (Years)</th>
+                <th scope="col">Weight (Kg)</th>
+                <th scope="col">Operation</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let pet of pets">
+            <tr>
+                <td>{{pet.name}}</td>
+                <td>{{pet.age}}</td>
+                <td>{{pet.weight}}</td>
+                <td>
+                    <a routerLink="/edit" (click)="getPet(pet.id)" class="btn btn-warning">Edit</a>
+                    <a class="btn btn-danger" (click)="deletePet(pet.id)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 *ngIf="!arePetRecordsExist">Sorry! There are no pet records currently.</h2>

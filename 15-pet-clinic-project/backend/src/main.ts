@@ -6,6 +6,6 @@ async function bootstrap() {
   app.enableCors({
     origin: 'http://localhost:4200',
   });
-  await app.listen(3000, () => console.log('Pets Service started in port 3000'));
+  await app.listen(3000);
 }
 bootstrap();

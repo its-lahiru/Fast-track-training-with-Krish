@@ -14,6 +14,8 @@ export class AllPetsComponent implements OnInit {
 
   pets: Pet[] = [];
 
+  arePetRecordsExist = false;
+
   constructor(
     private toastrService: ToastrService,
     private petsService: PetsService
@@ -23,11 +25,13 @@ export class AllPetsComponent implements OnInit {
     this.getAllPets();
   }
 
-  // retrieve all pets
   getAllPets() {
     this.petsService.getAll().subscribe(
       (res) => {
         this.pets = res;
+        if(res.length > 0) {
+          this.arePetRecordsExist = true;
+        }
       }
     );
   }
@@ -47,8 +51,7 @@ export class AllPetsComponent implements OnInit {
         if (success.status === 204) {
           this.toastrService.success('Successfully deleted!', 'Alert');
         }
-      },
-      (error) => console.log('Deletion failed')
+      }
     );
   }
 }

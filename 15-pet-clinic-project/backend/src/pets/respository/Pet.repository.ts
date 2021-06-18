@@ -20,7 +20,7 @@ export class PetRepository {
         if (newPet) {
             return await newPet.save();
         }
-        throw new BadRequestException('Pet creation is failed..');
+        throw new BadRequestException('Pet creation is failed');
     }
 
     async findAll(): Promise<Pet[]> {
@@ -51,13 +51,13 @@ export class PetRepository {
             }
             return pet.save();
         }
-        throw new NotFoundException('Pet is not found.. Update failed!');
+        throw new NotFoundException('Pet is not found. Updating failed!');
     }
 
     async delete(id: string): Promise<void> {
         const result = await this.petModel.deleteOne({ id: id });
         if (result.n === 0) {
-            throw new NotFoundException('Pet not found... Deletion failed!');
+            throw new NotFoundException('Pet not found. Deletion failed!');
         }
     }
 
@@ -66,6 +66,6 @@ export class PetRepository {
         if (pet) {
             return pet;
         }
-        throw new NotFoundException('Pet is not found!');
+        throw new NotFoundException('Pet is not found');
     }
 }

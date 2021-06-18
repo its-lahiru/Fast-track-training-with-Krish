@@ -7,9 +7,9 @@ import { ToastrModule } from "ngx-toastr";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PetsModule } from './pets/pets.module';
-import { OwnersModule } from './owners/owners.module';
-import { HeaderComponent } from './header/header.component';
+import { PetsModule } from './components/pets/pets.module';
+import { OwnersModule } from './components/owners/owners.module';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [

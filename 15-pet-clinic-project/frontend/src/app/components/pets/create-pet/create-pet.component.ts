@@ -13,7 +13,6 @@ import { PetsService } from 'src/app/services/pets.service';
 export class CreatePetComponent implements OnInit {
 
   pet!: Pet;
-  errorMessage: string = '';
 
   petRegisterForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -37,9 +36,6 @@ export class CreatePetComponent implements OnInit {
         if (success.status === 201) {
           this.toastrService.success('Successfully created!', 'Alert');
         }
-      },
-      () => {
-        this.errorMessage = 'All fields are required!';
       }
     );
   }
