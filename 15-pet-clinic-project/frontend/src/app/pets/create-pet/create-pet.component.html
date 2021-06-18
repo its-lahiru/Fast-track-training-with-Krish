@@ -13,7 +13,7 @@
         <input formControlName="weight" type="number" class="form-control" placeholder="weight" required>
     </div>
     <div class="form-group">
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button [disabled]="!petRegisterForm.valid" class="btn btn-primary" type="submit">Submit</button>
         <a class="btn btn-success" routerLink="/pets">Back to pets</a>
     </div>
 </form>

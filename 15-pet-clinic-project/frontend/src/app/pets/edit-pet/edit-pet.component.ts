@@ -16,7 +16,7 @@ export class EditPetComponent implements OnInit {
 
   errorMessage = '';
 
-  editForm!: FormGroup;
+  petEditForm!: FormGroup;
   pet!: Pet;
 
   petId!: string;
@@ -41,7 +41,7 @@ export class EditPetComponent implements OnInit {
       },
     );
 
-    this.editForm = this.formBuilder.group({
+    this.petEditForm = this.formBuilder.group({
       name: ['', Validators.required],
       age: ['', Validators.required],
       weight: ['', Validators.required],
@@ -49,7 +49,9 @@ export class EditPetComponent implements OnInit {
   }
 
   update(id: string): void {
-    this.pet = this.editForm.getRawValue();
+    this.pet = this.petEditForm.getRawValue();
+    console.log(this.pet);
+    
     this.petService.update(id, this.pet).subscribe(
       (success) => {
         this.router.navigate(['/pets']);

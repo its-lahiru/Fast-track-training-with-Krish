@@ -1,6 +1,6 @@
 <h3>Edit Pet</h3>
-<form [formGroup]="editForm" (submit)="update(petId)">
-    <div class=" form-group">
+<form [formGroup]="petEditForm" (submit)="update(petId)">
+    <div class="form-group">
         <label>Pet Name</label>
         <input formControlName="name" [value]="name" type="text" class="form-control" placeholder="name" required>
     </div>
@@ -17,3 +17,4 @@
         <a class="btn btn-success" routerLink="/pets">Back to pets</a>
     </div>
 </form>
+<p>{{errorMessage}}</p>
