@@ -2,7 +2,7 @@ import { BullModule } from '@nestjs/bull';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 
-import { Vehicle } from './vehicle/vehicle.entity';
+import { Vehicle } from './entity/vehicle.entity';
 import { VehicleModule } from './vehicle/vehicle.module';
 
 @Module({

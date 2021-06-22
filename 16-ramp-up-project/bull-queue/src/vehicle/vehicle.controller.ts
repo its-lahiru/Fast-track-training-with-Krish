@@ -1,12 +1,12 @@
-import { Controller } from '@nestjs/common';
-import { EventPattern } from '@nestjs/microservices';
+import { Body, Controller } from '@nestjs/common';
+import { EventPattern, MessagePattern } from '@nestjs/microservices';
 
 @Controller()
 export class VehicleController {
 
-    @EventPattern('vehicles_saved')
-    async handleVehicleCreated(data: Record<string, unknown>) {
-        // business logic
+    @MessagePattern({ cmd: 'saveData' })
+    async handleVehicleCreated(@Body('data') data: any) {
+        console.log(data);
     }
 
 }

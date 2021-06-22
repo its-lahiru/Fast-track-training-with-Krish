@@ -1,13 +1,14 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ExcelFile } from './excel-file.entity';
+import { MulterModule } from '@nestjs/platform-express';
 import { VehiclesController } from './vehicles.controller';
 import { VehiclesService } from './vehicles.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ExcelFile]),
+    MulterModule.register({
+      dest: './files'
+    }),
     ClientsModule.register([
       {
         name: 'VEHICLES_SERVICE',

@@ -12,4 +12,10 @@ export class VehicleProcessor {
         this.logger.debug(job.data);
         this.logger.debug('Saving completed');
     }
+
+    calculateVehicleAge(manufactureYear: string) {
+        const fullDateArray = manufactureYear.split('/');
+        const year = fullDateArray[2];
+        return new Date().getFullYear() - parseInt(year);
+    }
 }

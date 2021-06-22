@@ -1,24 +1,17 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { InjectRepository } from '@nestjs/typeorm';
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import { ClientProxy, Payload } from '@nestjs/microservices';
 import EventEmitter from 'events';
-import { Repository } from 'typeorm';
-import { v1 as uuid } from 'uuid';
-
-import { ExcelFile } from './excel-file.entity';
 
 @Injectable()
 export class VehiclesService {
 
-    constructor(
-        @InjectRepository(ExcelFile) private readonly repository: Repository<ExcelFile>,
-        @Inject('VEHICLES_SERVICE') private readonly client: ClientProxy) { }
+    constructor(@Inject('VEHICLES_SERVICE') private readonly client: ClientProxy) { }
 
-    async saveExcelFile(file) {
-        return this.repository.save(uuid(), file);
+    async saveExcelData(file: any) {
+        const pattern = { cmd: 'saveData' };
+        const payload = file;
+        return this.client.send<any>(pattern, payload);
     }
 
-    async isAllVehiclesSaved() {
-        this.client.emit('vehicles_saved', new EventEmitter());
-    }
 }
