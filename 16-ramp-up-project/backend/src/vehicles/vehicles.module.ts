@@ -1,25 +1,23 @@
+import { BullModule } from '@nestjs/bull';
 import { Module } from '@nestjs/common';
-import { ClientsModule, Transport } from '@nestjs/microservices';
 import { MulterModule } from '@nestjs/platform-express';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { VehicleConsumer } from 'src/consumer/vehicle.consumer';
+import { Vehicle } from 'src/entity/vehicle.entity';
 import { VehiclesController } from './vehicles.controller';
 import { VehiclesService } from './vehicles.service';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([Vehicle]),
     MulterModule.register({
-      dest: './files'
+      dest: './src/resources/static/assets/uploads'
     }),
-    ClientsModule.register([
-      {
-        name: 'VEHICLES_SERVICE',
-        transport: Transport.REDIS,
-        options: {
-          url: 'redis://localhost:6379',
-        }
-      },
-    ]),
+    BullModule.registerQueue({
+      name: 'vehicle',
+    }),
   ],
   controllers: [VehiclesController],
-  providers: [VehiclesService]
+  providers: [VehiclesService, VehicleConsumer]
 })
 export class VehiclesModule { }

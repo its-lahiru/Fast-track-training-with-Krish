@@ -1,17 +1,28 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { EventEmitter2 } from '@nestjs/event-emitter';
-import { ClientProxy, Payload } from '@nestjs/microservices';
-import EventEmitter from 'events';
+import { InjectQueue } from '@nestjs/bull';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Queue } from 'bull';
+import { Vehicle } from 'src/entity/vehicle.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class VehiclesService {
 
-    constructor(@Inject('VEHICLES_SERVICE') private readonly client: ClientProxy) { }
+    constructor(
+        @InjectRepository(Vehicle) private readonly repository: Repository<Vehicle>,
+        @InjectQueue('vehicle') private vehicleQueue: Queue
+        ) { }
 
-    async saveExcelData(file: any) {
-        const pattern = { cmd: 'saveData' };
-        const payload = file;
-        return this.client.send<any>(pattern, payload);
+    async processFile(file: any) {
+        await this.vehicleQueue.add('saving', {
+            file: file
+        },
+            { delay: 5000 }
+        );
+    }
+
+    async saveFile() {
+        
     }
 
 }
