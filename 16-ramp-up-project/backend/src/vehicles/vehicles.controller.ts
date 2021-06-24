@@ -9,7 +9,7 @@ import { VehiclesService } from './vehicles.service';
 @Controller()
 export class VehiclesController {
 
-    constructor(@InjectQueue('vehicle') private vehicleQueue: Queue) { }
+    constructor(private readonly vehicleService: VehiclesService) { }
 
     @Post('api/upload')
     @UseInterceptors(FileInterceptor('file', {
@@ -19,12 +19,8 @@ export class VehiclesController {
         }),
         fileFilter: fileFilter,
     }))
-    async saveUpload(@UploadedFile() file: any) {
-        await this.vehicleQueue.add('saving', {
-            file: file
-        },
-            { delay: 2000 }
-        );
+    async saveUploadFile(@UploadedFile() file: any) {
+        await this.vehicleService.addToQueue(file);
     }
 
 }

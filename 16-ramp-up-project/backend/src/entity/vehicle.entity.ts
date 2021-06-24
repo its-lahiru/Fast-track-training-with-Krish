@@ -24,7 +24,9 @@ export class Vehicle {
     @Column()
     vin: string;
 
-    @Column() //{ type: 'date' }
+    @Column({
+        type: 'date'
+    })
     manufactured_date: string;
 
     @Column()

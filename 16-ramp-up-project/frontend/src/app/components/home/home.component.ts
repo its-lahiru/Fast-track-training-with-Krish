@@ -11,10 +11,7 @@ export class HomeComponent implements OnInit {
 
   selectedFile: File = null;
 
-  constructor(
-    private homeService: HomeService,
-    private formBuilder: FormBuilder
-  ) { }
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void { }
 
