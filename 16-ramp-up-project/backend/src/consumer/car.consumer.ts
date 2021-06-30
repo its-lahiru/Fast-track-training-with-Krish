@@ -3,15 +3,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Job } from 'bull';
 import { Repository } from 'typeorm';
 import readXlsxFile from 'read-excel-file/node';
-import XLSX from 'xlsx';
 
-import { Vehicle } from 'src/entity/vehicle.entity';
-import { calculateVehicleAge } from 'src/utils/calculate-age.util';
+import { Car } from 'src/entity/car.entity';
+import { calculateCarAge } from 'src/utils/calculate-age.util';
 
-@Processor('vehicle')
-export class VehicleConsumer {
+@Processor('car')
+export class CarConsumer {
 
-    constructor(@InjectRepository(Vehicle) private readonly vehicleRepository: Repository<Vehicle>) { }
+    constructor(@InjectRepository(Car) private readonly carRepository: Repository<Car>) { }
 
     @Process('saving')
     async handleDataSaving(job: Job) {
@@ -32,7 +31,7 @@ export class VehicleConsumer {
                     const manufacturedYear = manufacturedDate.getFullYear();
 
                     // calculate vehicle age
-                    const vehicleAge = calculateVehicleAge(manufacturedYear);
+                    const vehicleAge = calculateCarAge(manufacturedYear);
 
                     // create vehicle object using current row data
                     const vehicle = {
@@ -47,7 +46,7 @@ export class VehicleConsumer {
                         age_of_vehicle: vehicleAge
                     }
                     // save record
-                    this.vehicleRepository.save(vehicle);
+                    this.carRepository.save(vehicle);
                 }
             }
         }).catch(err => {

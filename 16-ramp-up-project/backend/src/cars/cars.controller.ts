@@ -1,15 +1,13 @@
-import { InjectQueue } from '@nestjs/bull';
 import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Queue } from 'bull';
 import { diskStorage } from 'multer';
 import { editFileName, fileFilter } from 'src/utils/file-upload.utils';
-import { VehiclesService } from './vehicles.service';
+import { CarsService } from './cars.service';
 
 @Controller()
-export class VehiclesController {
+export class CarsController {
 
-    constructor(private readonly vehicleService: VehiclesService) { }
+    constructor(private readonly carService: CarsService) { }
 
     @Post('api/upload')
     @UseInterceptors(FileInterceptor('file', {
@@ -20,7 +18,7 @@ export class VehiclesController {
         fileFilter: fileFilter,
     }))
     async saveUploadFile(@UploadedFile() file: any) {
-        await this.vehicleService.addToQueue(file);
+        await this.carService.addToQueue(file);
     }
 
 }

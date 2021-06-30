@@ -1,4 +1,4 @@
 // calculate vehicle age
-export const calculateVehicleAge = (manufactureYear: number) => {
+export const calculateCarAge = (manufactureYear: number) => {
     return new Date().getFullYear() - manufactureYear;
 }

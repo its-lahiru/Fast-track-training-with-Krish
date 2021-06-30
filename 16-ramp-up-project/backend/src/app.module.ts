@@ -1,12 +1,8 @@
 import { BullModule } from '@nestjs/bull';
 import { Module } from '@nestjs/common';
-import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
-import { VehicleConsumer } from './consumer/vehicle.consumer';
-import { Vehicle } from './entity/vehicle.entity';
-import { VehiclesModule } from './vehicles/vehicles.module';
-import { VehiclesService } from './vehicles/vehicles.service';
+import { Car } from './entity/car.entity';
+import { CarsModule } from './cars/cars.module';
 
 @Module({
   imports: [
@@ -16,8 +12,8 @@ import { VehiclesService } from './vehicles/vehicles.service';
       port: 5432,
       username: 'postgres',
       password: '1234',
-      database: 'vehicle',
-      entities: [Vehicle],
+      database: 'car',
+      entities: [Car],
       synchronize: true,
       autoLoadEntities: true
     }),
@@ -27,7 +23,7 @@ import { VehiclesService } from './vehicles/vehicles.service';
         port: 6379,
       },
     }),
-    VehiclesModule,
+    CarsModule,
   ],
   controllers: [],
   providers: [],
