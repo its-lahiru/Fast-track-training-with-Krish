@@ -1,0 +1,37 @@
+<h3>Edit Pet</h3>
+
+<form>
+    <div class="form-group">
+        <label>First Name</label>
+        <input [(ngModel)]="firstName" [value]="firstName" name="firstName" type="text" class="form-control"
+            placeholder="First Name" required>
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input [(ngModel)]="lastName" [value]="lastName" name="lastName" type="text" class="form-control"
+            placeholder="Last Name" required>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input [(ngModel)]="email" [value]="email" name="email" type="text" class="form-control" placeholder="email"
+            required>
+    </div>
+    <div class="form-group">
+        <label>Car Make</label>
+        <input [(ngModel)]="carMake" [value]="carMake" name="carMake" type="text" class="form-control"
+            placeholder="Car Make" required>
+    </div>
+    <div class="form-group">
+        <label>Car Model</label>
+        <input [(ngModel)]="carModel" [value]="carModel" name="carModel" type="text" class="form-control"
+            placeholder="Car Model" required>
+    </div>
+    <div class="form-group">
+        <label>Vin</label>
+        <input [(ngModel)]="vin" [value]="vin" name="vin" type="text" class="form-control" placeholder="Vin" required>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" (click)="updateCar(id)">Update</button>
+        <a class="btn btn-success" routerLink="/cars">Back to Cars List</a>
+    </div>
+</form>

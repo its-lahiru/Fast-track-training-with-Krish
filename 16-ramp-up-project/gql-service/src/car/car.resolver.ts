@@ -1,31 +1,37 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CarService } from './car.service';
 import { UpdateCarDTO } from './dto/update-car.dto';
+import { Car } from './entities/car.entity';
 
-@Resolver()
+@Resolver(() => Car)
 export class CarResolver {
 
     constructor(private readonly carService: CarService) { }
 
-    @Query()
+    @Query(returns => [Car], { name: 'getAllCarsFilteredAsc' })
     async getAllCarsFilteredAsc(
         @Args('first') first: number,
         @Args('offset') offset: number,
         @Args('orderBy') orderBy: string,
-        @Args('car_model') car_model: string
+        @Args('carModel') carModel: string
     ) {
-        return await this.carService.getAllCarsFilteredAsc(first, offset, orderBy, car_model);
+        return await this.carService.getAllCarsFilteredAsc(first, offset, orderBy, carModel);
     }
 
-    @Query()
+    @Query(returns => [Car], { name: 'getAllCars' })
     async getAllCars() {
         return await this.carService.getAllCars();
     }
 
-    @Mutation(() => UpdateCarDTO)
+    @Query(returns => Car, { name: 'getACar' })
+    async getCar(@Args('id') id: number) {
+        return await this.carService.getACar(id);
+    }
+
+    @Mutation(returns => Car, { name: 'updateCar' })
     async updateCar(
         @Args('id') id: number,
-        @Args('firstame') firstName: string,
+        @Args('firstName') firstName: string,
         @Args('lastName') lastName: string,
         @Args('email') email: string,
         @Args('carMake') carMake: string,
@@ -35,7 +41,7 @@ export class CarResolver {
         return await this.carService.updateCar(id, firstName, lastName, email, carMake, carModel, vin);
     }
 
-    @Mutation()
+    @Mutation(returns => Car, { name: 'deleteCar' })
     async deleteCar(@Args('id') id: number) {
         return await this.carService.deleteCar(id);
     }

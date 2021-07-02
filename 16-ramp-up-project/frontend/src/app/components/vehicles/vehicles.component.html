@@ -1,1 +1,43 @@
-<p>vehicles works!</p>
+<div *ngIf="loading">
+    Loading...
+</div>
+<div *ngIf="error">
+    Error :(
+</div>
+
+<br>
+<div *ngIf="cars">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Car Make</th>
+                <th scope="col">Car Model</th>
+                <th scope="col">Vin</th>
+                <th scope="col">Manufactured Date</th>
+                <th scope="col">Age of Vehicle</th>
+                <th scope="col">Operation</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let car of cars">
+            <tr>
+                <td>{{car.id}}</td>
+                <td>{{car.firstName}}</td>
+                <td>{{car.lastName}}</td>
+                <td>{{car.email}}</td>
+                <td>{{car.carMake}}</td>
+                <td>{{car.carModel}}</td>
+                <td>{{car.vin}}</td>
+                <td>{{car.manufacturedDate}}</td>
+                <td>{{car.ageOfVehicle}}</td>
+                <td>
+                    <a routerLink="/edit-car" (click)="getACar(car.id)" class="btn btn-warning">Edit</a>
+                    <a (click)="deleteCar(car.id)" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

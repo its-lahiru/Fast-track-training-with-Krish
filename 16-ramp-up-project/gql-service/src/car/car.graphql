@@ -1,23 +1,32 @@
 type Query {
-    getAllCarsFilteredAsc(first: Int!, offset: Int!, orderBy: String!, car_model: String!): CardataConn!
+    getAllCarsFilteredAsc(first: Int!, offset: Int!, orderBy: String!, carModel: String!): CardataConn!
     getAllCars: [Car]
+    getACar(id: Int!): Car
 }
 
 type Mutation {
-    updateCar: Car
-    deleteCar: ID!
+    updateCar(
+        id: Int!, 
+        firstName: String,
+        lastName: String,
+        email: String,
+        carMake: String,
+        carModel: String,
+        vin: String
+    ): Car
+    deleteCar(id: Int!): Car
 }
 
 type Car {
     id: ID!
-    first_name: String!
-    last_name: String!
+    firstName: String!
+    lastName: String!
     email: String!
-    car_make: String!
-    car_model: String!
+    carMake: String!
+    carModel: String!
     vin: String!
-    manufactured_date: String!
-    age_of_vehicle: Int!
+    manufacturedDate: String!
+    ageOfVehicle: Int!
 }
 
 type CardataConn {
