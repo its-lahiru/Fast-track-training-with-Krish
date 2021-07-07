@@ -31,7 +31,7 @@ export class VehiclesComponent implements OnInit {
           this.error = result.error;
         },
         error => {
-          console.log('There was an error sending the query', error);
+          console.log('There was an error sending the getAllCars query', error);
         });
   }
 
@@ -43,7 +43,7 @@ export class VehiclesComponent implements OnInit {
           Emitters.carEmitter.emit(car);
         },
         error => {
-          console.log('There was an error sending the query', error);
+          console.log('There was an error sending the getACar query', error);
         });
   }
 
@@ -54,7 +54,7 @@ export class VehiclesComponent implements OnInit {
           this.getAllCars();
         },
         error => {
-          console.log('There was an error sending the query', error);
+          console.log('There was an error sending the deleteCar query', error);
         });
   }
 }

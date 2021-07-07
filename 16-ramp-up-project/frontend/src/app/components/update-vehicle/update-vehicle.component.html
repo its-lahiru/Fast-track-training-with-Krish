@@ -1,34 +1,34 @@
-<h3>Edit Pet</h3>
+<h3>Edit pet</h3>
 
 <form>
     <div class="form-group">
-        <label>First Name</label>
-        <input [(ngModel)]="firstName" [value]="firstName" name="firstName" type="text" class="form-control"
-            placeholder="First Name" required>
+        <label>First name</label>
+        <input [value]="firstName" [(ngModel)]="firstName" name="firstName" type="text" class="form-control"
+            placeholder="First name" required>
     </div>
     <div class="form-group">
-        <label>Last Name</label>
-        <input [(ngModel)]="lastName" [value]="lastName" name="lastName" type="text" class="form-control"
-            placeholder="Last Name" required>
+        <label>Last name</label>
+        <input [value]="lastName" [(ngModel)]="lastName" name="lastName" type="text" class="form-control"
+            placeholder="Last name" required>
     </div>
     <div class="form-group">
         <label>Email</label>
-        <input [(ngModel)]="email" [value]="email" name="email" type="text" class="form-control" placeholder="email"
+        <input [value]="email" [(ngModel)]="email" name="email" type="text" class="form-control" placeholder="email"
             required>
     </div>
     <div class="form-group">
-        <label>Car Make</label>
-        <input [(ngModel)]="carMake" [value]="carMake" name="carMake" type="text" class="form-control"
-            placeholder="Car Make" required>
+        <label>Car make</label>
+        <input [value]="carMake" [(ngModel)]="carMake" name="carMake" type="text" class="form-control"
+            placeholder="Car make" required>
     </div>
     <div class="form-group">
-        <label>Car Model</label>
-        <input [(ngModel)]="carModel" [value]="carModel" name="carModel" type="text" class="form-control"
-            placeholder="Car Model" required>
+        <label>Car model</label>
+        <input [value]="carModel" [(ngModel)]="carModel" name="carModel" type="text" class="form-control"
+            placeholder="Car model" required>
     </div>
     <div class="form-group">
         <label>Vin</label>
-        <input [(ngModel)]="vin" [value]="vin" name="vin" type="text" class="form-control" placeholder="Vin" required>
+        <input [value]="vin" [(ngModel)]="vin" name="vin" type="text" class="form-control" placeholder="Vin" required>
     </div>
     <div class="form-group">
         <button class="btn btn-primary" type="submit" (click)="updateCar(id)">Update</button>
