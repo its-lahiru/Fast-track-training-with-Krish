@@ -14,11 +14,11 @@ type Mutation {
         carModel: String,
         vin: String
     ): Car
-    deleteCar(id: Int!): Car
+    deleteCar(id: ID!): Car
 }
 
 type Car {
-    id: ID!
+    id: Int!
     firstName: String!
     lastName: String!
     email: String!

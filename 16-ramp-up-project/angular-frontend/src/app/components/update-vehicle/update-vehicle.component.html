@@ -2,6 +2,7 @@
 
 <form>
     <div class="form-group">
+        <input type="hidden" name="id" [value]="id">
         <label>First name</label>
         <input [value]="firstName" [(ngModel)]="firstName" name="firstName" type="text" class="form-control"
             placeholder="First name" required>
@@ -31,7 +32,7 @@
         <input [value]="vin" [(ngModel)]="vin" name="vin" type="text" class="form-control" placeholder="Vin" required>
     </div>
     <div class="form-group">
-        <button class="btn btn-primary" type="submit" (click)="updateCar(id)">Update</button>
+        <button class="btn btn-primary" type="submit" (click)="updateCar()">Update</button>
         <a class="btn btn-success" routerLink="/cars">Back to Cars List</a>
     </div>
 </form>

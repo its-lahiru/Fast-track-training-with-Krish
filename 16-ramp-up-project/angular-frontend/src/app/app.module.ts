@@ -20,9 +20,9 @@ import { UpdateVehicleComponent } from './components/update-vehicle/update-vehic
     UpdateVehicleComponent
   ],
   imports: [
-    FormsModule,
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     GraphQLModule

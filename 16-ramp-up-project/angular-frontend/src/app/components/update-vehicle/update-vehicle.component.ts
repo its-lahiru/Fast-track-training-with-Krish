@@ -12,13 +12,22 @@ import { Emitters } from '../emitters/emitters';
 })
 export class UpdateVehicleComponent implements OnInit {
 
-  id: number = 0;
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
-  carMake: string = '';
-  carModel: string = '';
-  vin: string = '';
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  carMake: string;
+  carModel: string;
+  vin: string;
+
+  // id: number = 0;
+  // firstName: string = '';
+  // lastName: string = '';
+  // email: string = '';
+  // carMake: string = '';
+  // carModel: string = '';
+  // vin: string = '';
+
 
   constructor(
     private router: Router,
@@ -38,8 +47,8 @@ export class UpdateVehicleComponent implements OnInit {
     );
   }
 
-  updateCar(id: number): void {
-    this.carService.updateCar(id, this.firstName, this.lastName, this.email, this.carMake, this.carModel, this.vin)
+  updateCar(): void {
+    this.carService.updateCar(this.id, this.firstName, this.lastName, this.email, this.carMake, this.carModel, this.vin)
       .subscribe(
         () => {
           this.router.navigate(['/cars']);
